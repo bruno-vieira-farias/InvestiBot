@@ -19,6 +19,7 @@ dependencies {
 	}
 
 	implementation 'com.github.pengrad:java-telegram-bot-api:4.4.0'
+
 }
 
 test {
