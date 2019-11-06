@@ -1,4 +1,4 @@
-package br.com.fiap.mba.full.telegramBot;
+package br.com.fiap.mba.telegramBot.domain;
 
 public class Resposta {
     private String texto;

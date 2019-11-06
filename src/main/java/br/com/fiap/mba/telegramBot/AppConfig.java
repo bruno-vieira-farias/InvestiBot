@@ -1,6 +1,7 @@
-package br.com.fiap.mba.full.telegramBot;
+package br.com.fiap.mba.telegramBot;
 
 import com.pengrad.telegrambot.TelegramBot;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public TelegramBot telegramBot() {
-        return new TelegramBot("897746755:AAG3Kh_LpbGeeJLiorrn6cVx5I_d6UQefJU");
+    public TelegramBot telegramBot(@Value("${telegram-bot.token}") String token) {
+        return new TelegramBot(token);
     }
 }
