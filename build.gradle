@@ -9,6 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	jcenter()
 	mavenCentral()
 }
 
@@ -19,6 +20,18 @@ dependencies {
 	}
 
 	implementation 'com.github.pengrad:java-telegram-bot-api:4.4.0'
+	compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.2.0'
+//	compile 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
+
+	compile("com.fasterxml.jackson.core:jackson-core:2.9.9")
+	compile("com.fasterxml.jackson.core:jackson-databind:2.9.9")
+	compile("com.fasterxml.jackson.core:jackson-annotations:2.9.9")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-guava:2.9.9")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.9")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.9")
+	compile("com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.9")
+	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9")
+
 
 }
 

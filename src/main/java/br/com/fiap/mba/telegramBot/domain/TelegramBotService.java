@@ -17,6 +17,6 @@ public class TelegramBotService {
         this.telegramBotListener = telegramBotListener;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyEvent.class)
     public void iniciaListener() { bot.setUpdatesListener(telegramBotListener);}
 }
