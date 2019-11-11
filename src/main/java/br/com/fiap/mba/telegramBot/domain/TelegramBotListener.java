@@ -25,9 +25,10 @@ public class TelegramBotListener implements UpdatesListener {
     }
 
     private void processaMensagenRecebida(String textoMensagem, long chatId) {
-        String textoResposta = processaMensagemService.processaMensagem(textoMensagem);
-        Resposta resposta = new Resposta(textoResposta, chatId);
-        sendResponseService.responde(resposta);
+        List<Resposta> respostas = processaMensagemService.processaMensagem(textoMensagem, chatId);
+        for (Resposta resposta: respostas)
+        {
+            sendResponseService.responde(resposta);
+        }
     }
-
 }

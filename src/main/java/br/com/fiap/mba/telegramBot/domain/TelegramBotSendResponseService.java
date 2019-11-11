@@ -1,6 +1,8 @@
 package br.com.fiap.mba.telegramBot.domain;
 
 import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.request.ChatAction;
+import com.pengrad.telegrambot.request.SendChatAction;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ public class TelegramBotSendResponseService {
     }
 
     public void responde(Resposta resposta) {
+        telegramBot.execute(new SendChatAction(resposta.getChatId(), ChatAction.typing.name()));
+
         telegramBot.execute(new SendMessage(resposta.getChatId(), resposta.getTexto()));
     }
 }
