@@ -1,5 +1,6 @@
 package br.com.fiap.mba.bcbClient;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
