@@ -1,5 +1,7 @@
 package br.com.fiap.mba.telegramBot.domain;
 
+import br.com.fiap.mba.telegramBot.domain.modelos.enums.Indexador;
+import br.com.fiap.mba.telegramBot.servicos.HGFinanceService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -7,6 +9,10 @@ import java.util.List;
 
 @Service
 public class ProcessaMensagemService {
+    private HGFinanceService hgFinanceService;
+    public ProcessaMensagemService(HGFinanceService hgFinanceService) {
+        this.hgFinanceService = hgFinanceService;
+    }
 
     public List<Resposta> processaMensagem(String mensagem, long chatId){
         List<Resposta> respostas = new ArrayList<>();
@@ -22,6 +28,7 @@ public class ProcessaMensagemService {
             respostas.add(responder("Esse tipo de investimento pode ser baseado no indice CDI (como CDBs, LCIs, LCAs, etc)"
                     + "ou SELIC (como o Tesouro SELIC)", chatId));
             respostas.add(responder("Qual investimento gostaria de simular?", chatId));
+            respostas.add(responder(hgFinanceService.ObterDadosDoIndexador(Indexador.Cdi),chatId));
             return respostas;
         }
 
