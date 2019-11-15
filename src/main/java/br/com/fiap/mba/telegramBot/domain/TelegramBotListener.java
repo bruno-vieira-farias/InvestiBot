@@ -24,11 +24,14 @@ public class TelegramBotListener implements UpdatesListener {
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
     }
 
-    private void processaMensagenRecebida(String textoMensagem, long chatId) {
-        List<Resposta> respostas = processaMensagemService.processaMensagem(textoMensagem, chatId);
-        for (Resposta resposta: respostas)
-        {
-            sendResponseService.responde(resposta);
-        }
+    private void processaMensagenRecebida(String mensagemRecebida, long chatId) {
+        String mensagemResposta = processaMensagemService.processaMensagem(mensagemRecebida);
+        sendResponseService.respondeBrunao(mensagemResposta, chatId);
+
+        //        List<Resposta> respostas = processaMensagemService.processaMensagem2(textoMensagem, chatId);
+//        for (Resposta resposta: respostas)
+//        {
+//            sendResponseService.responde(resposta);
+//        }
     }
 }

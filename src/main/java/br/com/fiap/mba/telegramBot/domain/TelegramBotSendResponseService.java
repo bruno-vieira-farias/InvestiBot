@@ -19,4 +19,8 @@ public class TelegramBotSendResponseService {
 
         telegramBot.execute(new SendMessage(resposta.getChatId(), resposta.getTexto()));
     }
+
+    public void respondeBrunao(String mensagemResposta, Long chatId) {
+        telegramBot.execute(new SendMessage(chatId, mensagemResposta));
+    }
 }

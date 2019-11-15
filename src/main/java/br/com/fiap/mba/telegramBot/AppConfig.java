@@ -1,5 +1,6 @@
 package br.com.fiap.mba.telegramBot;
 
+import br.com.fiap.mba.bcbClient.BancoCentralBrasilClient;
 import com.pengrad.telegrambot.TelegramBot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -16,5 +17,5 @@ public class AppConfig {
     }
 
     @Bean
-    public HGFinanceService hgFinanceService(@Value("${hgfinance.url}") String url, @Value("${hgfinance.token}") String token) { return new HGFinanceService(url, token); }
+    public BancoCentralBrasilClient bancoCentralBrasilClient() {return new BancoCentralBrasilClient();}
 }

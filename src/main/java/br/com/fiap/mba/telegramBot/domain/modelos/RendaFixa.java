@@ -1,7 +1,5 @@
 package br.com.fiap.mba.telegramBot.domain.modelos;
 
-import br.com.fiap.mba.telegramBot.domain.modelos.enums.Indexador;
-
 public class RendaFixa extends Investimento {
     private int porcentagemPosfixada;
     private int porcentagemPrefixada;

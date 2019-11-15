@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class RendimentoPoupanca {
+public class TaxaSelic {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate datafim;
     private BigDecimal valor;
 
     public LocalDate getData() {
@@ -18,14 +16,6 @@ public class RendimentoPoupanca {
 
     public void setData(LocalDate data) {
         this.data = data;
-    }
-
-    public LocalDate getDatafim() {
-        return datafim;
-    }
-
-    public void setDatafim(LocalDate datafim) {
-        this.datafim = datafim;
     }
 
     public BigDecimal getValor() {
