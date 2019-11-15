@@ -17,5 +17,7 @@ public class AppConfig {
     }
 
     @Bean
-    public BancoCentralBrasilClient bancoCentralBrasilClient() {return new BancoCentralBrasilClient();}
+    public BancoCentralBrasilClient bancoCentralBrasilClient() {
+        return new BancoCentralBrasilClient();
+    }
 }
