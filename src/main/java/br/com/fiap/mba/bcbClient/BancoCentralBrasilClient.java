@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import kong.unirest.GenericType;
 import kong.unirest.JacksonObjectMapper;
 import kong.unirest.Unirest;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -48,6 +49,15 @@ public class BancoCentralBrasilClient {
                 .asObject(new GenericType<List<TaxaSelic>>() {})
                 .getBody()
                 .get(0);
+    }
+
+    public List<TaxaSelic> buscaTaxaSelic(LocalDate dataInicial, LocalDate dataFinal) {
+        return Unirest.get(URL_SELIC)
+                .header("accept", "application/json")
+                .queryString("dataInicial", formatador.format(dataInicial))
+                .queryString("dataFinal", formatador.format(dataFinal))
+                .asObject(new GenericType<List<TaxaSelic>>() {})
+                .getBody();
     }
 
     private void setup() {

@@ -2,15 +2,26 @@ package br.com.fiap.mba.investBot;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Serviço que é interface com o usuário do Telegram.
+ */
 @Service
 public class ProcessaMensagemService {
+    private TaxaSelicService taxaSelicService;
+
+    public ProcessaMensagemService(TaxaSelicService taxaSelicService) {
+        this.taxaSelicService = taxaSelicService;
+    }
+
     public String processaMensagem(String mensagemRecebida){
         switch(mensagemRecebida) {
             case "/start":
                 return mensagemInicial();
             case "1":
-                return "Aqui temos o texto ao pressionar 1";
-            default:
+                return "A taxa selic diaria atual é " + taxaSelicService.obtemTaxaSelicDia() + "%";
+            case "2":
+                return "A taxa selic mensal  é " + taxaSelicService.obtemTaxaSelicUltimosTrintaDias() + "%";
+             default:
                 return "desculpe, não entendi.";
         }
     }
