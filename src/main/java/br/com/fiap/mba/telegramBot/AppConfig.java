@@ -15,4 +15,6 @@ public class AppConfig {
         return new TelegramBot(token);
     }
 
+    @Bean
+    public HGFinanceService hgFinanceService(@Value("${hgfinance.url}") String url, @Value("${hgfinance.token}") String token) { return new HGFinanceService(url, token); }
 }
