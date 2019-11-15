@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot;
+package br.com.fiap.mba.investBot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

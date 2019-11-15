@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot.domain.modelos;
+package br.com.fiap.mba.investBot.domain.modelos;
 
 public abstract class Investimento {
 //    protected Indexador indexador;

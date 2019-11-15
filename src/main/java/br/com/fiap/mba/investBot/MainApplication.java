@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot;
+package br.com.fiap.mba.investBot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

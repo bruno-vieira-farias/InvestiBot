@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot.domain;
+package br.com.fiap.mba.investBot.domain;
 
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -26,12 +26,6 @@ public class TelegramBotListener implements UpdatesListener {
 
     private void processaMensagenRecebida(String mensagemRecebida, long chatId) {
         String mensagemResposta = processaMensagemService.processaMensagem(mensagemRecebida);
-        sendResponseService.respondeBrunao(mensagemResposta, chatId);
-
-        //        List<Resposta> respostas = processaMensagemService.processaMensagem2(textoMensagem, chatId);
-//        for (Resposta resposta: respostas)
-//        {
-//            sendResponseService.responde(resposta);
-//        }
+        sendResponseService.responde(mensagemResposta, chatId);
     }
 }

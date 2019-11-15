@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot;
+package br.com.fiap.mba.investBot;
 
 import br.com.fiap.mba.bcbClient.BancoCentralBrasilClient;
 import com.pengrad.telegrambot.TelegramBot;

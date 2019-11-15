@@ -1,4 +1,4 @@
-package br.com.fiap.mba.telegramBot.domain;
+package br.com.fiap.mba.investBot.domain;
 
 import com.pengrad.telegrambot.TelegramBot;
 import org.springframework.beans.factory.annotation.Autowired;
