@@ -3,12 +3,16 @@ package br.com.fiap.mba.investBot;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.request.ChatAction;
+import com.pengrad.telegrambot.model.request.Keyboard;
+import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
 import com.pengrad.telegrambot.request.SendChatAction;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *  Serviço que represeta o InvestBot.
@@ -38,11 +42,11 @@ public class InvestBotService {
 
     private void processaMensagenRecebida(String mensagemRecebida, long chatId) {
         bot.execute(new SendChatAction(chatId, ChatAction.typing.name()));
-        String mensagemResposta = processaMensagemService.processaMensagem(mensagemRecebida);
-        responde(mensagemResposta, chatId);
+        List<SendMessage> respostas = processaMensagemService.processaMensagem(mensagemRecebida, chatId);
+        responde(respostas);
     }
 
-    private void responde(String mensagemResposta, Long chatId) {
-        bot.execute(new SendMessage(chatId, mensagemResposta));
+    private void responde( List<SendMessage> respostas) {
+        respostas.forEach(sendMessage -> bot.execute(sendMessage));
     }
 }
