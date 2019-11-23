@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ *  Classe responsável por criar as instancias do SendMessage.
+ */
 @Component
 public class SendMessageFactory {
 

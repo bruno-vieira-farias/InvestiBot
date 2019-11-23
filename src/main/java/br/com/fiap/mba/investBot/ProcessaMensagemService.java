@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Serviço que é interface com o usuário do Telegram.
+ * Serviço responsável por aplicar os corretos tratamento as mensagens recebidas.
  */
 @Service
 public class ProcessaMensagemService {
@@ -30,7 +30,7 @@ public class ProcessaMensagemService {
 
             case "Taxa selic hoje":
                 textoResposta = "A taxa selic hoje esta é de ${a}%";
-                return Collections.singletonList(criaRespostaInvestBot(textoResposta, taxaSelicService.obtemTaxaSelicDia()));
+                return Collections.singletonList(criaRespostaInvestBot(textoResposta, taxaSelicService.obtemTaxaSelicHoje()));
 
             case "Taxa selic acumulada nos últimos 30 dias":
                 textoResposta = "A taxa acumulada nos últimos 30 dias é de ${a}%";

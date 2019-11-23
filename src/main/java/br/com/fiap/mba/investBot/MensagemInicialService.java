@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Servico responsável por gerar as mensagem inicial do bot.
+ *
+ * Na mensagem inicial existem botoes que facilitam a navegação entre as funcionalidades disponíveis.
+ */
 @Service
 public class MensagemInicialService {
 

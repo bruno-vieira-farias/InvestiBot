@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Agrupamento de serviços sobre a taxa Selic.
+ * Agrupamento de serviços aplicados sobre a taxa Selic.
  */
 @Service
 public class TaxaSelicService {
@@ -19,7 +19,7 @@ public class TaxaSelicService {
         this.bcbClient = bcbClient;
     }
 
-    public BigDecimal obtemTaxaSelicDia(){
+    public BigDecimal obtemTaxaSelicHoje(){
         return bcbClient.buscaTaxaSelic(LocalDate.now()).getValor();
     }
 

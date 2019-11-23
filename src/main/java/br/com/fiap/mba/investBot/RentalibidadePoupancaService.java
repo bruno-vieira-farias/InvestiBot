@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * Agrupamento de serviços aplicados sobre a rentabilidade da poupança.
+ */
 @Service
 public class RentalibidadePoupancaService {
     private BancoCentralBrasilClient bcbClient;

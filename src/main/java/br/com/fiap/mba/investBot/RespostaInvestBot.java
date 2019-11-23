@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Entidade que respresenta as respostas dadas pelo InvestiBot
+ * Respresenta as respostas dadas pelo InvestiBot
  */
 public class RespostaInvestBot {
     private String mensagem;

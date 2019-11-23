@@ -15,4 +15,14 @@ Bot [Telegram](https://telegram.org/) que fornece informações relevantes para 
 telegram-bot.token={seuTelegramToken}
 ...
 ```
+### Tela Inicial 
 ![Tela Inicial](/images/telaInicial.png)
+
+
+###Comandos válidos
+- `/start`
+- `Taxa selic hoje`
+- `Taxa selic acumulada nos últimos 30 dias`
+- `Rendimento da poupanca nos últimos 30 dias`
+- `Rendimento da poupança acumulado nos últimos 12 meses`
+- `5`
