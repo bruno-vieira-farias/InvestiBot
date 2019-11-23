@@ -19,7 +19,7 @@ telegram-bot.token={seuTelegramToken}
 ![Tela Inicial](/images/telaInicial.png)
 
 
-###Comandos válidos
+### Comandos válidos
 - `/start`
 - `Taxa selic hoje`
 - `Taxa selic acumulada nos últimos 30 dias`
