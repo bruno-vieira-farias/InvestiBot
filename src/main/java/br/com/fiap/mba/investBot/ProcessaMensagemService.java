@@ -1,13 +1,9 @@
 package br.com.fiap.mba.investBot;
 
-import com.pengrad.telegrambot.model.request.Keyboard;
-import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
-import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,62 +13,47 @@ import java.util.List;
 public class ProcessaMensagemService {
     private TaxaSelicService taxaSelicService;
     private RentalibidadePoupancaService rentalibidadePoupancaService;
-    private HashMap<Integer, String> respostas = new HashMap<>();
-    private long chatId;
-    public ProcessaMensagemService(TaxaSelicService taxaSelicService , RentalibidadePoupancaService rentalibidadePoupancaService) {
+    private MensagemInicialService mensagemInicialService;
+
+    public ProcessaMensagemService(TaxaSelicService taxaSelicService, RentalibidadePoupancaService rentalibidadePoupancaService, MensagemInicialService mensagemInicialService) {
         this.taxaSelicService = taxaSelicService;
         this.rentalibidadePoupancaService = rentalibidadePoupancaService;
-        respostas.put(1, "A taxa selic hoje esta é de ${a}%");
-        respostas.put(2, "A taxa acumulada nos últimos 30 dias é de ${a}%");
-        respostas.put(3, "O rendimento da poupanca nos últimos 30 dias é de ${a}%.");
-        respostas.put(4, "O rendimento da poupança acumulado nos últimos 12 meses é de ${a}%.");
-        respostas.put(5, "Acho que faltei nesta aula.");
+        this.mensagemInicialService = mensagemInicialService;
     }
 
-    public List<SendMessage> processaMensagem(String mensagemRecebida, long chatId) {
-        this.chatId = chatId;
-
-        List<SendMessage> padrao = new LinkedList<SendMessage>();
-        padrao.add(new SendMessage(chatId,"desculpe, não entendi."));
+    public List<RespostaInvestBot> processaMensagem(String mensagemRecebida) {
+        String textoResposta;
 
         switch (mensagemRecebida) {
             case "/start":
-                return mensagemInicial();
+                return mensagemInicialService.geraConversaInicial();
+
             case "Taxa selic hoje":
-                return formataMensageRetorno(1, taxaSelicService.obtemTaxaSelicDia());
+                textoResposta = "A taxa selic hoje esta é de ${a}%";
+                return Collections.singletonList(criaRespostaInvestBot(textoResposta, taxaSelicService.obtemTaxaSelicDia()));
+
             case "Taxa selic acumulada nos últimos 30 dias":
-                return formataMensageRetorno(2, taxaSelicService.obtemTaxaSelicUltimosTrintaDias());
+                textoResposta = "A taxa acumulada nos últimos 30 dias é de ${a}%";
+                return Collections.singletonList(criaRespostaInvestBot(textoResposta, taxaSelicService.obtemTaxaSelicUltimosTrintaDias()));
+
             case "Rendimento da poupanca nos últimos 30 dias":
-                return formataMensageRetorno(3, rentalibidadePoupancaService.obtemRendimentoPoupancaUltimosTrintaDias());
+                textoResposta = "O rendimento da poupanca nos últimos 30 dias é de ${a}%.";
+                return Collections.singletonList(criaRespostaInvestBot(textoResposta, rentalibidadePoupancaService.obtemRendimentoPoupancaUltimosTrintaDias()));
+
             case "Rendimento da poupança acumulado nos últimos 12 meses":
-                return formataMensageRetorno(4, rentalibidadePoupancaService.obtemRendimentoPoupancaUltimosDozeMeses());
+                textoResposta = "O rendimento da poupança acumulado nos últimos 12 meses é de ${a}%.";
+                return Collections.singletonList(criaRespostaInvestBot(textoResposta, rentalibidadePoupancaService.obtemRendimentoPoupancaUltimosDozeMeses()));
+
             case "5":
-                return formataMensageRetorno(5, BigDecimal.ZERO);
+                textoResposta = "Acho que faltei nesta aula.";
+                return Collections.singletonList(new RespostaInvestBot(textoResposta));
             default:
-                return padrao;
+                textoResposta = "desculpe, não entendi.";
+                return Collections.singletonList(new RespostaInvestBot(textoResposta));
         }
     }
 
-    private List<SendMessage> formataMensageRetorno(Integer indiceResposta, BigDecimal taxaCalculada) {
-        List<SendMessage> messages = new LinkedList<>();
-        messages.add(new SendMessage(this.chatId, respostas.get(indiceResposta).replace("${a}", taxaCalculada.toString())));
-
-        return messages;
-    }
-
-    private List<SendMessage> mensagemInicial() {
-        List<SendMessage> messages = new LinkedList<>();
-
-
-        messages.add(new SendMessage(this.chatId,"Oi, eu sou o InvestBot e posso te ajudar com valiosas informações de investimento.\n"));
-
-        Keyboard replyKeyboardMarkup = new ReplyKeyboardMarkup(
-                new String[]{"Taxa selic hoje", "Taxa selic acumulada nos últimos 30 dias"},
-                new String[]{"Rendimento da poupanca nos últimos 30 dias", "Rendimento da poupança acumulado nos últimos 12 meses"}
-        );
-
-        messages.add(new SendMessage(this.chatId, "Selecione uma das opcões do menu e deixe o trabalho duro comigo.\n").replyMarkup(replyKeyboardMarkup));
-
-        return messages;
+    private RespostaInvestBot criaRespostaInvestBot(String textoResposta, BigDecimal taxaCalculada) {
+        return new RespostaInvestBot(textoResposta.replace("${a}", taxaCalculada.toString()));
     }
 }
