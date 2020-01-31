@@ -27,4 +27,4 @@ telegram-bot.token={seuTelegramToken}
 - `Rendimento da poupança acumulado nos últimos 12 meses`
 
 ### JavaDoc
-- [Acesse aqui o javadoc do projeto](/doc/index.html)
+- Disponível em /doc/index.html
