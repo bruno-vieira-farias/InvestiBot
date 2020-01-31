@@ -27,4 +27,4 @@ telegram-bot.token={seuTelegramToken}
 - `Rendimento da poupança acumulado nos últimos 12 meses`
 
 ### JavaDoc
-- Disponível em /doc/index.html
+- Disponível [aqui](https://onurbasfar.github.io/InvestiBot/doc/) ou no diretorio /doc do projeto.
