@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class RendimentoPoupanca {
+/**
+ * Representa um rendimento mensal da poupança.
+ */
+public class RendimentoMensalPoupanca {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
     @JsonFormat(pattern = "dd/MM/yyyy")

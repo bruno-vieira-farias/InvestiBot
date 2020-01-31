@@ -25,4 +25,6 @@ telegram-bot.token={seuTelegramToken}
 - `Taxa selic acumulada nos últimos 30 dias`
 - `Rendimento da poupanca nos últimos 30 dias`
 - `Rendimento da poupança acumulado nos últimos 12 meses`
-- `5`
+
+### JavaDoc
+- [Acesse aqui o javadoc do projeto](/doc/index.html)

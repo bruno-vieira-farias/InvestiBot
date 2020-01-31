@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Serviço responsável por aplicar os corretos tratamento as mensagens recebidas.
+ * Serviço que trata as mensagens recebidas do usuario e produz o retorno adequado.
  */
 @Service
 public class ProcessaMensagemService {
@@ -44,9 +44,6 @@ public class ProcessaMensagemService {
                 textoResposta = "O rendimento da poupança acumulado nos últimos 12 meses é de ${a}%.";
                 return Collections.singletonList(criaRespostaInvestBot(textoResposta, rentalibidadePoupancaService.obtemRendimentoPoupancaUltimosDozeMeses()));
 
-            case "5":
-                textoResposta = "Acho que faltei nesta aula.";
-                return Collections.singletonList(new RespostaInvestBot(textoResposta));
             default:
                 textoResposta = "desculpe, não entendi.";
                 return Collections.singletonList(new RespostaInvestBot(textoResposta));

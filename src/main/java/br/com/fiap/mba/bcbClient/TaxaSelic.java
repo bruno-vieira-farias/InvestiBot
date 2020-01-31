@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Representa a taxa selic diaria de um dia específico.
+ */
 public class TaxaSelic {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;

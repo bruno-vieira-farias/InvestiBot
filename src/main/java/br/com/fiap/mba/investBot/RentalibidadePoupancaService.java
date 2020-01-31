@@ -1,7 +1,7 @@
 package br.com.fiap.mba.investBot;
 
 import br.com.fiap.mba.bcbClient.BancoCentralBrasilClient;
-import br.com.fiap.mba.bcbClient.RendimentoPoupanca;
+import br.com.fiap.mba.bcbClient.RendimentoMensalPoupanca;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -23,11 +23,11 @@ public class RentalibidadePoupancaService {
     }
 
     public BigDecimal obtemRendimentoPoupancaUltimosDozeMeses(){
-        List<RendimentoPoupanca> RendimentoPoupancaNoPeriodo = bcbClient.buscaRendimentosPoupanca(LocalDate.now().minusMonths(12),LocalDate.now());
-        return RendimentoPoupancaNoPeriodo
+        List<RendimentoMensalPoupanca> rendimentoMensalPoupancaNoPeriodo = bcbClient.buscaRendimentosPoupanca(LocalDate.now().minusMonths(12),LocalDate.now());
+        return rendimentoMensalPoupancaNoPeriodo
                 .stream()
                 .filter(rendimento -> rendimento.getData().getDayOfMonth() == LocalDate.now().getDayOfMonth() )
-                .map(RendimentoPoupanca::getValor)
+                .map(RendimentoMensalPoupanca::getValor)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

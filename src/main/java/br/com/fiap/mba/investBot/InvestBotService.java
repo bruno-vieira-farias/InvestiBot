@@ -14,8 +14,8 @@ import java.util.List;
 
 /**
  * Serviço que representa o InvestBot.
- * <p>
- * O InvestBot interage com o usuário pela interface de um BOT do Telegram.
+ *
+ * O InvestBot interage com o usuário pela interface do BOT Telegram.
  */
 @Service
 public class InvestBotService {
@@ -23,13 +23,15 @@ public class InvestBotService {
     private ProcessaMensagemService processaMensagemService;
     private SendMessageFactory sendMessageFactory;
 
-    @Autowired
     public InvestBotService(TelegramBot bot, ProcessaMensagemService processaMensagemService, SendMessageFactory sendMessageFactory) {
         this.bot = bot;
         this.processaMensagemService = processaMensagemService;
         this.sendMessageFactory = sendMessageFactory;
     }
 
+    /**
+     *  Inicia o bot para interação com o usuário.
+     */
     @EventListener(ApplicationReadyEvent.class)
     public void startInvestBot() {
         bot.setUpdatesListener(updates -> {
@@ -40,12 +42,24 @@ public class InvestBotService {
         });
     }
 
+    /**
+     * Trata a mensagem recebida de acordo com as interações do usuário.
+     *
+     * @param mensagemRecebida é o input do usuario no bot.
+     * @param chatId é um idenficador que representa uma chat ativo.
+     */
     private void processaMensagenRecebida(String mensagemRecebida, long chatId) {
         bot.execute(new SendChatAction(chatId, ChatAction.typing.name()));
         List<RespostaInvestBot> respostas = processaMensagemService.processaMensagem(mensagemRecebida);
         responde(chatId, respostas);
     }
 
+    /**
+     * Responde a uma interação do usuário.
+     *
+     * @param chatId é um idenficador que representa uma chat ativo.
+     * @param respostasInvestBot retorno enviado para o bot que será apresentado para o usuário.
+     */
     private void responde(long chatId, List<RespostaInvestBot> respostasInvestBot) {
         SendMessage sendMessage;
 
