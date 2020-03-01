@@ -15,6 +15,14 @@ Bot [Telegram](https://telegram.org/) que fornece informações relevantes para 
 telegram-bot.token={seuTelegramToken}
 ...
 ```
+### Run
+Execute na raiz do projeto a task `bootRun` do gradle.
+
+- Windows
+  `gradlew bootRun`
+- Linux / Mac
+  `./gradlew bootRun`
+
 ### Tela Inicial 
 ![Tela Inicial](/images/telaInicial.png)
 
